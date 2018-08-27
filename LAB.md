@@ -3,6 +3,10 @@ Search The Web
 
 Use `fetch` and VueJS to read data from a third-party API.
 
+## Code Kata
+
+Complete [today's Kata](https://www.codewars.com/kata/nice-array)
+
 ## Choose an API
 
 This lab will have you evaluate an API and read the docs to deduce what is required to display data. You will
