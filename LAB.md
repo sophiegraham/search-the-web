@@ -30,27 +30,39 @@ call from then browser console or your Vue app.)
 
 Use a default `GET` (or hard-code a query parameter) and display data.
 
+#### Router
+
+Add in a router and create a `path` for your search that loads your `List` component.
+
 ```
 App
+  |
+  +- router-view
+  
+List (use domain name)
 ```
 
 #### Model
 
 1. Encapsulate API call to service in a module
-1. Import module to (`App`) component. Use the `created` life-cycle method to initiate the search.
+1. Import module to (`List`) component. Use the `created` life-cycle method to initiate the search.
 1. Set the data when returned from the callback
+1. Test by display {{ list.length }} in your `List` component
 
 #### View
 
 ```
 App
   |
-  +- List (use domain name)
-       |
-       +- Item (use domain name)
+  +- router-view
+  
+List (use domain name)
+     |
+     +- [Item] (use domain name)
 ```
 
-1. Create a component for the list of results and a component for each list item
+1. Display for `List` component of results and a component for each list item
+
 
 ### Part 2
 
@@ -58,11 +70,13 @@ App
 ```
 App
   |
+  +- router-view
+  
+List (use domain name)
+  |
   +- Search
   |
-  +- List
-       |
-       +- Item  
+  +- [Item] (use domain name)
 ```
 
 Instead of data search functionality being initiated by component loading, use a method that
@@ -71,21 +85,45 @@ Pass the method as a callback prop to the child `Search` component.
 
 ## Bonus
 
+### Detail View
 
 ```
 App
   |
+  +- router-view
+  
+List (use domain name)
+  |
   +- Search
   |
-  +- List
-  |    |
-  |    +- Item 
-  |
-  +- Detail 
+  +- [Item] (use domain name)
+  
+Detail (use domain name)
 ```
 
-Add routes to your app, and add a detail view! When the user clicks on an item, go to `/items/:id` and fetch additional information
-about the clicked item.
+Add routes to your app, and add a detail view! When the user clicks on an item, go to `/items/:id` and fetch additional information about the clicked item.
+
+### Second Search
+
+Add another searchable resource!
+
+```
+App
+  |
+  +- router-view
+  
+List (use domain name)
+  |
+  +- Search
+  |
+  +- [Item] (use domain name)
+  
+OtherList (use domain name)
+  |
+  +- OtherSearch
+  |
+  +- [OtherItem] (use domain name)
+```
 
 ## Rubric
 
