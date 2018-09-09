@@ -1,6 +1,6 @@
 <template>
   <form @submit.prevent="handleSubmit">
-    <input v-model="search">
+    <input v-model="keyword">
     <button>Go</button>
   </form>
 </template>
@@ -8,16 +8,25 @@
 <script>
 export default {
   props: {
-    onSearch: Function
+    search: String
   },
   data() {
     return {
-      search: ''
+      keyword: this.search || ''
     };
+  },
+  watch: {
+    search(value) {
+      this.keyword = value;
+    }
   },
   methods: {
     handleSubmit() {
-      this.onSearch(this.search);
+      this.$router.push({
+        query: {
+          search: encodeURIComponent(this.keyword)
+        }
+      });
     }
   }
 };
