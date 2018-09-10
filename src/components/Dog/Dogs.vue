@@ -10,11 +10,10 @@
       {{error}}
     </pre>
 
-    <p v-if="search">Searching for &quot;{{ search }}&quot;</p>
     <div class="search-container">
       <ul v-if="dogs">
-        <Dog v-for="(dog, i) in dogs"
-          :key="i"
+        <Dog v-for="dog in dogs"
+          :key="dog.article"
           :dog="dog"
         />
       </ul>
@@ -23,7 +22,7 @@
 </template>
 
 <script>
-import api from '../../services/api';
+import api from '../../services/api.js';
 import Dog from './Dog';
 import DogsSearch from './DogsSearch';
 import Loader from './Loader';
@@ -61,23 +60,25 @@ export default {
     }
   },
   methods: {
-    handleSearch() {
+    handleSearch(search) {
       this.search = search || '';
       this.searchDogs();
 
     },
     searchDogs() {
       if(!this.search) return;
+
       this.loading = true;
       this.error = null;
 
-    api.getDogs()
-      .then(response => {
-        this.dogs = response.results;
-        this.total = response.count;
-        this.loading = false;
+      api.getDogs(this.search)
+        .then(response => {
+          this.dogs = response.results;
+          this.total = response.count;
+          this.loading = false;
         })
         .catch(err => {
+
           this.error = err.message;
           this.loading = false;
         });

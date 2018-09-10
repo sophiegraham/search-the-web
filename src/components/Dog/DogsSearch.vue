@@ -1,8 +1,10 @@
 <template>
-  <form @submit.prevent="handleSubmit">
-    <input v-model="keyword">
-    <button>Go</button>
-  </form>
+  <div>
+    <form @submit.prevent="handleSubmit">
+      <input v-model="keyword">
+      <button>Go</button>
+    </form>
+  </div>
 </template>
 
 <script>

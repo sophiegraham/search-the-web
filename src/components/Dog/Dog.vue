@@ -1,6 +1,6 @@
 <template>
   <li>
-    {{dog.article}} dog {{dog.article}}
+    {{dog.article}}
   </li>
 </template>
 
