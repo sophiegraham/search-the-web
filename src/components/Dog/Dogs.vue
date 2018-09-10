@@ -44,12 +44,12 @@ export default {
     DogsSearch,
     Loader
   },
-  created() {
-    const query = this.$router.history.current.query;
-    if(query) {
-      this.handleSearch(query.search);
-    }
-  },
+  // created() {
+  //   const query = this.$router.history.current.query;
+  //   if(query) {
+  //     this.handleSearch(query.search);
+  //   }
+  // },
   watch: {
     $route(newRoute, oldRoute) {
       const newSearch = newRoute.query.search;
